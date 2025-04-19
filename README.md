@@ -1,5 +1,9 @@
 # KDAG Associates’ Selection Round 2
 
+## Hola!
+This is repo stores my submission for the second round of selection process for Kharagpur Data Analytics Group (KDAG) Associates.
+The first round was a quiz round. The second round involved two coding tasks and a reading task. The coding tasks were Langton's Ants (Basic Python Proficiency) and Music Genre Analysis (NLP), overview of which can be found below. The Jupyter notebook for both tasks are well documented and the Music Genre Analysis report can be found [here](Task/Core%20Team%20-%20Round%202%20-%20Rohan%20Kumar%20Sah%20-%2024ME10134/Task%202/Report.pdf). The `Papers` folder is an Obsidian Vault containing my notes on the reading tasks. Given the fact that I got in, I think a did a decent job :D
+
 ## Core Team: Coding Task Overview
 
 You are required to complete **both Task 1 and Task 2**.
@@ -145,9 +149,9 @@ Additional Resources:
 
 These papers are essential for your personal interview preparation. Choose at least one to prepare. Additional points will be awarded for preparing more than one.
 
-- [Paper 1](https://drive.google.com/file/d/1ql7X4IkcsjGcjgsnnhp5M3OzAZZmK-wt/view?usp=sharing)
-- [Paper 2](https://drive.google.com/file/d/1QBAhh9rYxSHSScTzGDWRg620XMqp1-0s/view?usp=sharing)
-- [Paper 3](https://drive.google.com/file/d/1SvWju8qw9K5sn1TKrc-oWjq_85uYBhB4/view?usp=sharing)
+- [Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word Embeddings](https://drive.google.com/file/d/1ql7X4IkcsjGcjgsnnhp5M3OzAZZmK-wt/view?usp=sharing)
+- [A comprehensive survey on regularization strategies in machine learning](https://drive.google.com/file/d/1QBAhh9rYxSHSScTzGDWRg620XMqp1-0s/view?usp=sharing)
+- [Statistical Modeling : The Two Cultures](https://drive.google.com/file/d/1SvWju8qw9K5sn1TKrc-oWjq_85uYBhB4/view?usp=sharing)
 
 ---
 
