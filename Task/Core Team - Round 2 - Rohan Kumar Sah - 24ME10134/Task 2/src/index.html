@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Rohan Kumar Sah" />
+  <title>Music Genre Analysis</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Music Genre Analysis</h1>
+<p class="author">Rohan Kumar Sah</p>
+</header>
+<h1 id="introduction">Introduction</h1>
+<p>Each sub-task is discussed in a separate section. The libraries used are as follows :</p>
+<ul>
+<li><p>pandas : for interacting with the dataset</p></li>
+<li><p>numpy : for making life easier</p></li>
+<li><p>seaborn + matplotlib : for visualisation</p></li>
+<li><p>random : for initialising centroids in clustering algorithm</p></li>
+</ul>
+<h1 id="vectorisation">Vectorisation</h1>
+<p>For generating embeddings, we were supposed to choose between BoW (Bag of Words) and TF-IDF. I went with BoW for the following reasons :</p>
+<ul>
+<li><p>BoW is extremely simple to implement and performs well for small datasets like this one.</p></li>
+<li><p>TF-IDF would have been a better choice if we were working with a text corpus but for this keyword analysis BoW does the trick.</p></li>
+<li><p>TF-IDF would recognise common words and reduce their impact, but here each keyword is equally important.</p>
+<div id="tab:widgets">
+<table>
+<caption><span id="tab:widgets" label="tab:widgets">[tab:widgets]</span> keyword_1 and frequency comparison</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">keyword_1</th>
+<th style="text-align: right;">Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">banjo</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">brass</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">guitar</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">piano</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">synth</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">violin</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>It would be silly to discriminate between guitar and violin - see Table 1, because of frequency since there is no semantics involved here due to the dataset being three keywords, and TF-IDF doesn’t serve its purpose well.</p></li>
+</ul>
+<h1 id="dimensionality-reduction">Dimensionality reduction</h1>
+<p>This involves standard PCA code using numpy. We simplified the sparse vectors while retaining helpful information.</p>
+<h1 id="combining-the-embeddings-into-one">Combining the embeddings into one</h1>
+<p>There are multiple ways of combining embeddings. Concatenation is out of the question since we are trying to preserve the dimensions. Since all keywords are equally important, we averaged the vectors. Simply summing up can cause larger magnitudes we do not want to deal with. <span class="math display">\[V_{\text{final}} = \frac{1}{3} \sum_{i=1}^{3} V_i\]</span> Cross Product would collapse the vector into a scalar, and we would lose information. For K-Means (which we will implement in the next section), average is the best choice.</p>
+<figure>
+<img src="vecs.png" id="fig:vectors" style="width:100.0%" alt="" /><figcaption>Vectors after combination</figcaption>
+</figure>
+<h1 id="clustering">Clustering</h1>
+<p>I started with the K-Means algorithm for clustering; looking at the WCSS (Within-Cluster Sum of Square) and Silhouette Scores for different cluster numbers gives an idea of what value to take. Looking at the Elbow Point in the graph and considering that there are five genres means we should take k=5 for further analysis.</p>
+<figure>
+<img src="metrics.png" id="fig:metrics" style="width:100.0%" alt="" /><figcaption>Metrics averaged over 100 iterations</figcaption>
+</figure>
+<p>However, soon, a problem arises: the K-Means algorithm can sometimes be inaccurate. Since the centroids are randomly initialised, if a centroid is initialised too far from the points, it won’t shift, and if two centroids are initialised too close, they probably won’t move.</p>
+<figure>
+<img src="fail.png" id="fig:failure" style="width:50.0%" alt="" /><figcaption>A failed K-Means example where two centroids are at a corner and belong to no cluster</figcaption>
+</figure>
+<p>The problem lies in centroid initialisation, so we must find a better way. We, therefore, shift to K-Means++, where centroids are initialised iteratively. Failures are almost eliminated by this method.</p>
+<figure>
+<img src="output.png" id="fig:output" style="width:90.0%" alt="" /><figcaption>Final Clustering</figcaption>
+</figure>
+<h1 id="analysis">Analysis</h1>
+<h2 id="percentage-distribution-of-ground-truth-genres-in-each-cluster">Percentage distribution of ground truth genres in each cluster</h2>
+<p>We plot a heatmap, comparing percentages of the genres within each cluster.</p>
+<figure>
+<img src="heatmap.png" id="fig:distribution" style="width:70.0%" alt="" /><figcaption>Heatmap showing the percentages of different genres within each cluster</figcaption>
+</figure>
+<p>We observe the following :</p>
+<ul>
+<li><p>Cluster 0 is mostly populated by Classical (72.73%)</p></li>
+<li><p>Cluster 1 is mostly populated by Hip-Hop (74.19%)</p></li>
+<li><p>Cluster 2 is not dominated by a single genre</p></li>
+<li><p>Cluster 3 has a more even distribution then Cluster 2</p></li>
+<li><p>Cluster 4 is also mostly classical</p></li>
+</ul>
+<figure>
+<img src="heatmap2.png" id="fig:distributionreverse" style="width:70.0%" alt="" /><figcaption>Heatmap showing the percentage of songs from each genre in each cluster</figcaption>
+</figure>
+<p>If we switch our calculation a bit we observe something else as well. Rock is the best clustered genre because most of its points are within the same genre. The Clustering of Hip-Hop and Country is also not that bad. Pop is the most poorly clustered of all.</p>
+<h2 id="silhouette-score">Silhouette Score</h2>
+<p>We already have the general idea of the Silhouette Score for different number of clusters - see Figure 2. The silhouette score for a single sample is defined as:</p>
+<p><span class="math display">\[s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}\]</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\(a(i)\)</span> is the average intra-cluster distance (mean distance to other points in the same cluster).</p></li>
+<li><p><span class="math inline">\(b(i)\)</span> is the average nearest-cluster distance (mean distance to points in the nearest neighboring cluster).</p></li>
+</ul>
+<p>The average silhouette score for 5 clusters over 100 iterations is:</p>
+<p><span class="math display">\[\text{Average Silhouette Score} = 0.65460999\]</span></p>
+<p>For most iterations with k=5, the silhouette score remains within the range:</p>
+<p><span class="math display">\[0.6 \leq s \leq 0.7\]</span></p>
+<p>where <span class="math inline">\(s\)</span> represents the silhouette score. This is a good clustering score considering that we used the most simplistic approaches to the problems in this task.</p>
+<h2 id="genre-prediction">Genre Prediction</h2>
+<p>On converting the keywords to vectors and finding the nearest centroid we obtain the following results</p>
+<ul>
+<li><p><code>[’piano’, ’calm’, ’slow’]</code> belongs to cluster 2</p></li>
+<li><p><code>[’guitar’, ’emotional’, ’distorted’]</code> belongs to cluster 0</p></li>
+<li><p><code>[’synth’, ’mellow’, ’distorted’]</code> belongs to cluster 1</p></li>
+</ul>
+<p>We can refer to Figure 5 and make the following observations :</p>
+<ul>
+<li><p>Cluster 2 is not really dominated by a single genre but we can sort <code>[’piano’, ’calm’, ’slow’]</code> into Country</p></li>
+<li><p>Cluster 0 is dominated by Classical so we can sort <code>[’guitar’, ’emotional’, ’distorted’]</code> into Classical</p></li>
+<li><p>Cluster 1 is dominated by hip-Hop so we can sort <code>[’synth’, ’mellow’, ’distorted’]</code> into Hip-Hop</p></li>
+</ul>
+</body>
+</html>

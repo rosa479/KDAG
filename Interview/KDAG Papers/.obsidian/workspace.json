@@ -1,0 +1,162 @@
+{
+  "main": {
+    "id": "f8c3dfb2797e1f6e",
+    "type": "split",
+    "children": [
+      {
+        "id": "46243535e51e7987",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cbdddbfa90489022",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f0a439e960bd6cfd",
+    "type": "split",
+    "children": [
+      {
+        "id": "30bcaaeaff94c7b5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1fd375db67d81668",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "83ad49964a2fccc3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a0418cf3fbb78039",
+    "type": "split",
+    "children": [
+      {
+        "id": "a637ea00f40c05c7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d04b01de82842290",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Paper 1/Bias in Word Embeddings.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Bias in Word Embeddings"
+            }
+          },
+          {
+            "id": "d9ba757f922f77aa",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "0d48748ef869dd1e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Paper 1/Bias in Word Embeddings.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Bias in Word Embeddings"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:New drawing": false
+    }
+  },
+  "active": "cbdddbfa90489022",
+  "lastOpenFiles": [
+    "Untitled.md",
+    "Untitled",
+    "Paper 1/Biases in Word Embeddings.md",
+    "Excalidraw/Drawing 2025-03-19 17.10.30.excalidraw.md",
+    "Excalidraw",
+    "Paper 3/Statistical Modelling.md",
+    "Paper 2/Regularisation Strategies in Machine Learning.md",
+    "Paper 2/Pasted image 20250228224301.png",
+    "Paper 2/Pasted image 20250228223930.png",
+    "Paper 2/Pasted image 20250228221857.png",
+    "Paper 3",
+    "Paper 2",
+    "Paper 1/Pasted image 20250228081108.png",
+    "Paper 1/Pasted image 20250227182737.png",
+    "Paper 1/Pasted image 20250227122224.png",
+    "Paper 1/Pasted image 20250227120432.png",
+    "Pasted image 20250227192727.png",
+    "Paper 1/Biases in Word Embeddings.pdf",
+    "Excalidraw/Drawing 2025-02-27 19.26.26.excalidraw.md",
+    "Paper 1/Untitled.canvas",
+    "Paper 1",
+    "Welcome.md"
+  ]
+}

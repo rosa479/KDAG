@@ -1,0 +1,12 @@
+{
+  "theme": "obsidian",
+  "nativeMenus": false,
+  "showViewHeader": true,
+  "showRibbon": true,
+  "baseFontSizeAction": true,
+  "baseFontSize": 16,
+  "enabledCssSnippets": [
+    "center",
+    "Center Images"
+  ]
+}
