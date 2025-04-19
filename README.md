@@ -1,52 +1,161 @@
 # KDAG Associates’ Selection Round 2
 
-## Core Team
+## Core Team: Coding Task Overview
 
-### 📌 Coding Task
+You are required to complete **both Task 1 and Task 2**.
 
-You are required to complete **both Task 1 and Task 2**. Links to the tasks are provided below:
-
-- **[Task 1](https://drive.google.com/file/d/1uyg0CYRz78wVO5fEmmulVg-vNnlVhl2i/view?usp=sharing)**
-- **[Task 2](https://drive.google.com/file/d/1xYRwicmNMgw4L4E8-IjRw_XkTRMtevgr/view?usp=sharing)**
-
-#### Instructions
-
-- Submit your solution in a `.ipynb` (Jupyter Notebook) format. Refer to this [Jupyter Notebook Tutorial](https://www.youtube.com/watch?v=HW29067qVWk).
-- Ensure your notebook runs without errors when using "Run All".
-- Use **only the libraries mentioned in the task**.
-- Points will be awarded based on your **approach and thought process**. Explain your work using **Markdown cells**.
-
-**🕒 Submission Deadline:** 12th February 2025  
-**📤 Submission Form:** [Click Here](https://docs.google.com/forms/d/e/1FAIpQLSfiml4aY8eUKcuy5ipacDbxUiRTXef4bSIyyuj5xuMdKcxqMA/viewform?usp=dialog)
-
-#### For Doubts, Contact:
-
-- **Task 1:**  
-  [uditmpradhan@gmail.com](mailto:uditmpradhan@gmail.com)  
-  [vraghuveer382@gmail.com](mailto:vraghuveer382@gmail.com)
-
-- **Task 2:**  
-  [nayandeepdeb125@gmail.com](mailto:nayandeepdeb125@gmail.com)  
-  [khanshehryaar705@gmail.com](mailto:khanshehryaar705@gmail.com)
-
-> 💡 *Selection to the Personal Interview round is based solely on your performance in the Coding Task.*
+- Submit your solution in `.ipynb` (Jupyter Notebook) format.
+- Your notebook must run without errors using "Run All".
+- Only use libraries explicitly mentioned in the task.
+- Explain your thought process using **Markdown cells**.
+- Final selection for interviews is based entirely on performance in these tasks.
 
 ---
 
-### 📚 Reading Task
+## Task 1: Langton’s Ants
 
-These papers are essential for your personal interview preparation. You can select **one** of the 3 papers to prepare. Extra points for preparing more than one.
+Langton’s Ant is a two-dimensional Turing machine simulation where ants move across a grid based on square colors and pheromones. Their simple movement rules lead to complex behavior over time.
 
-- **[Paper 1](https://drive.google.com/file/d/1ql7X4IkcsjGcjgsnnhp5M3OzAZZmK-wt/view?usp=sharing)**
-- **[Paper 2](https://drive.google.com/file/d/1QBAhh9rYxSHSScTzGDWRg620XMqp1-0s/view?usp=sharing)**
-- **[Paper 3](https://drive.google.com/file/d/1SvWju8qw9K5sn1TKrc-oWjq_85uYBhB4/view?usp=sharing)**
+### Movement Rules
+
+1. **White Square**
+   - Turn 90° clockwise
+   - Flip the square color
+   - Drop a pheromone (e.g., "A" or "B")
+   - Move forward one unit
+
+2. **Black Square**
+   - Turn 90° counter-clockwise
+   - Flip the square color
+   - Drop a pheromone
+   - Move forward one unit
+
+### Pheromone Behavior
+
+- **Self-pheromone**: 80% chance to move straight, 20% to follow standard turning rule
+- **Cross-pheromone**: 20% chance to move straight, 80% to follow standard turning rule
+- **Pheromone Replacement**: A new pheromone replaces any existing one
+- **Pheromone Decay**: Influence fades over ~5 steps
+
+### Technical Requirements
+
+- Use **Python** only
+- A simulation interface must be present (Pygame is allowed)
+- Bonus points for using Object-Oriented Programming (OOP)
+
+### Deliverables
+
+- A `.py` file with runnable simulation code
+- Code must be structured and readable
+
+### Resources
+
+- [Langton’s Ant - Wikipedia](https://en.wikipedia.org/wiki/Langton's_ant)  
+- [Langton’s Ant Simulation - YouTube](https://youtu.be/-l_dDYriTPo?si=20co9FS0woBNQLvc)  
+- [PyGame Documentation](https://www.pygame.org/docs/)
 
 ---
 
-### 🛠 Task Prerequisites and Basic Resources
+## Task 2: Music Genre Analysis
 
-If you're not familiar with Python or libraries like **NumPy, Pandas, Matplotlib, Seaborn**, check out the following tutorials:
+Analyze a dataset of songs tagged with three descriptive keywords and a genre label. The objective is to group songs based on their keyword similarities and extract insights.
 
-- [Scientific Computing with Python Certification | freeCodeCamp](https://www.freecodecamp.org/learn/scientific-computing-with-python/)
-- [Python Tutorial | W3Schools](https://www.w3schools.com/python/)
-- [Libraries Full Course (NumPy, Pandas, Matplotlib, Seaborn) – YouTube](https://www.youtube.com/watch?v=r-uOLxNrNk8)
+**Dataset:**  
+[Download Dataset](https://drive.google.com/file/d/168XF0_JH01azSPuOc8KvRV4j42Fyhw5N/view?usp=sharing)
+
+### Rules
+
+- Only use `numpy`, `pandas`, `matplotlib`, `seaborn`
+- No use of `scikit-learn` or similar libraries for algorithm implementation
+
+### Pipeline
+
+#### 1. Keyword Vectorization
+
+- Use both **BoW (Bag of Words)** and **TF-IDF**
+- Compare both techniques and justify your choice
+- Vectorize the keywords accordingly
+
+Resources:
+- [Bag of Words Introduction](https://machinelearningmastery.com/gentle-introduction-bag-words-model/)
+- [TF-IDF Guide](https://neptune.ai/blog/vectorization-techniques-in-nlp-guide)
+- [Vector Embeddings - Computerphile](https://www.youtube.com/watch?v=gQddtTdmG_8)
+
+#### 2. Dimensionality Reduction
+
+- Implement **PCA (Principal Component Analysis)** manually using numpy
+- Reduce vectors to 2D for each keyword type
+
+Resources:
+- [StatQuest: PCA Explanation](https://youtu.be/FgakZw6K1QQ?si=7QQvt4sl8cC9MJLI)
+
+#### 3. Combine Embeddings
+
+- Combine the reduced vectors into one embedding per song
+- Suggested methods: averaging, concatenation, cross-product, etc.
+- Justify your method
+
+#### 4. Clustering
+
+- Apply **K-Means** or other clustering method
+- Justify your choice of `k` or the method itself
+- Visualize clusters
+
+Resources:
+- [K-Means Clustering - StatQuest](https://www.youtube.com/watch?v=4b5d3muPQmA)
+- [Stanford CS229 Lecture on K-Means](https://www.youtube.com/watch?v=LmpkKwsyQj4&t=1083s)
+
+#### 5. Final Analysis
+
+- What is the genre distribution per cluster?
+- Do clusters align with genre labels?
+- Calculate **Silhouette Score**
+- Predict genre for:
+  - `[piano, calm, slow]`
+  - `[guitar, emotional, distorted]`
+  - `[synth, mellow, distorted]`
+
+#### 6. Report
+
+- Use a white-paper format
+- Explain thought process, methodology, results
+- Include plots and visualizations
+
+#### 7. Bonus Section (Optional)
+
+- Invent a creative vectorization technique
+- Deeper analysis: by genre, cluster, or keyword
+- Explore **extrinsic** and **intrinsic** clustering metrics
+
+Example idea (not to be used directly):  
+Create a 26D vector with frequency of each letter in keywords
+
+### Final Submission Requirements
+
+- A Jupyter Notebook (`.ipynb`), self-contained and error-free
+- A report in PDF format
+
+Additional Resources:
+- [Clustering in Scikit-learn](https://scikit-learn.org/stable/modules/clustering)
+- [K-Means++ Paper](https://youtu.be/NDAVDRFMh_0?si=LirfEz_l27sbsBf8)
+
+---
+
+## Reading Task
+
+These papers are essential for your personal interview preparation. Choose at least one to prepare. Additional points will be awarded for preparing more than one.
+
+- [Paper 1](https://drive.google.com/file/d/1ql7X4IkcsjGcjgsnnhp5M3OzAZZmK-wt/view?usp=sharing)
+- [Paper 2](https://drive.google.com/file/d/1QBAhh9rYxSHSScTzGDWRg620XMqp1-0s/view?usp=sharing)
+- [Paper 3](https://drive.google.com/file/d/1SvWju8qw9K5sn1TKrc-oWjq_85uYBhB4/view?usp=sharing)
+
+---
+
+## Recommended Resources for Beginners
+
+If you're not familiar with Python or the required libraries, refer to:
+
+- [Scientific Computing with Python - freeCodeCamp](https://www.freecodecamp.org/learn/scientific-computing-with-python/)
+- [Python Tutorial - W3Schools](https://www.w3schools.com/python/)
+- [Numpy, Pandas, Matplotlib, Seaborn - YouTube](https://www.youtube.com/watch?v=r-uOLxNrNk8)
+
