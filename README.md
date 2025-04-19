@@ -4,6 +4,8 @@
 This is repo stores my submission for the second round of selection process for Kharagpur Data Analytics Group (KDAG) Associates.
 The first round was a quiz round. The second round involved two coding tasks and a reading task. The coding tasks were Langton's Ants (Basic Python Proficiency) and Music Genre Analysis (NLP), overview of which can be found below. The Jupyter notebook for both tasks are well documented and the Music Genre Analysis report can be found [here](Task/Core%20Team%20-%20Round%202%20-%20Rohan%20Kumar%20Sah%20-%2024ME10134/Task%202/Report.pdf). The `Papers` folder is an Obsidian Vault containing my notes on the reading tasks. Given the fact that I got in, I think a did a decent job :D
 
+---
+
 ## Core Team: Coding Task Overview
 
 You are required to complete **both Task 1 and Task 2**.
